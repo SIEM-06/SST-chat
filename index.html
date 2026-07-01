@@ -263,6 +263,86 @@
   .toast.err{border-color:rgba(255,77,94,0.5);color:#ff8a96}
   @keyframes toastIn{from{opacity:0;transform:translateY(10px)}}
 
+  /* ---------- ANIMASYONLAR ---------- */
+  @keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes cardIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes popIn{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(45,255,158,.55)}70%{box-shadow:0 0 0 5px rgba(45,255,158,0)}100%{box-shadow:0 0 0 0 rgba(45,255,158,0)}}
+  @keyframes speakPulse{0%,100%{box-shadow:0 0 8px rgba(45,255,158,.5)}50%{box-shadow:0 0 16px rgba(45,255,158,.95)}}
+  @keyframes brandGlow{0%,100%{filter:drop-shadow(0 0 3px rgba(0,229,255,.35))}50%{filter:drop-shadow(0 0 10px rgba(255,45,120,.45))}}
+  @keyframes mentionFlash{0%{background:rgba(0,229,255,.22)}100%{background:rgba(0,229,255,.06)}}
+  @keyframes jumpBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .msg.enter{animation:msgIn .22s cubic-bezier(.2,.7,.3,1)}
+  .overlay.show .modal{animation:modalIn .22s cubic-bezier(.2,.7,.3,1)}
+  .reaction.enter{animation:popIn .25s cubic-bezier(.2,.7,.3,1)}
+  .brand{animation:brandGlow 5s ease-in-out infinite}
+  .msg.mentioned{animation:mentionFlash 1.4s ease-out}
+  .jump-btn.show{animation:jumpBounce 1.6s ease-in-out infinite}
+  .status-dot.status-online{animation:pulseDot 2.6s infinite}
+  .voice-part.speaking .vp-avatar{animation:speakPulse 1s ease-in-out infinite}
+  .channel,.member,.reaction,.tb-btn,.vb-btn,.icon-btn,.btn,.send-btn,.comp-icon,.switch,.switch::after{transition:all .14s ease}
+  .channel:hover{transform:translateX(2px)}
+  .member{border-radius:8px;cursor:pointer}
+  .member:hover{background:var(--bg-2);transform:translateX(2px)}
+  .msg-author{cursor:pointer}
+  .msg-gutter .avatar{cursor:pointer;transition:transform .12s}
+  .msg-gutter .avatar:hover{transform:scale(1.08)}
+  .btn:active,.send-btn:active,.tb-btn:active,.reaction:active{transform:scale(.94)}
+  body.no-anim *{animation:none!important;transition:none!important}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- PROFİL KARTI ---------- */
+  .pcard-wrap{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:110;padding:20px;background:rgba(0,0,0,.45)}
+  .pcard-wrap.show{display:flex}
+  .pcard{width:100%;max-width:340px;background:var(--bg-1);border:1px solid var(--line);border-radius:16px;overflow:hidden;animation:cardIn .18s cubic-bezier(.2,.7,.3,1)}
+  .pcard-banner{height:72px;background:linear-gradient(120deg,var(--accent),var(--accent-2))}
+  .pcard-body{padding:0 20px 20px;margin-top:-34px}
+  .pcard-avatar{width:76px;height:76px;border-radius:50%;border:4px solid var(--bg-1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;color:#04040a}
+  .pcard-name{font-size:20px;font-weight:700;margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .role-badge{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:rgba(0,229,255,.15);color:var(--accent)}
+  .role-badge.admin{background:rgba(255,45,120,.18);color:#ff7eb0}
+  .role-badge.banned{background:rgba(255,77,94,.18);color:#ff8a96}
+  .pcard-status{font-size:13px;color:var(--text-dim);margin-top:4px}
+  .pcard-bio{font-size:13px;color:#cfcfe0;line-height:1.5;margin-top:12px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;white-space:pre-wrap;word-wrap:break-word}
+  .pcard-actions{display:flex;gap:8px;margin-top:14px}
+  .pcard-actions .btn{margin-top:0;font-size:13px;padding:10px}
+
+  /* ---------- RENK SEÇİCİ ---------- */
+  .swatches{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .1s}
+  .swatch:hover{transform:scale(1.12)}
+  .swatch.sel{border-color:#fff;box-shadow:0 0 0 2px var(--bg-1),0 0 0 4px var(--accent)}
+  .swatch-custom{width:28px;height:28px;padding:0;border:2px dashed var(--line);border-radius:50%;background:none;overflow:hidden}
+  .swatch-custom input{width:40px;height:40px;border:none;padding:0;transform:translate(-6px,-6px);cursor:pointer;background:none}
+
+  /* ---------- ADMIN PANEL ---------- */
+  .modal.wide{max-width:560px}
+  .tabs{display:flex;gap:6px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+  .tab{background:none;border:none;color:var(--text-dim);font-size:13px;padding:9px 12px;border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tab.active{color:var(--text);border-bottom-color:var(--accent)}
+  .adm-row{display:flex;align-items:center;gap:10px;padding:9px 6px;border-top:1px solid var(--line)}
+  .adm-row .avatar{width:32px;height:32px;font-size:13px}
+  .adm-info{flex:1;min-width:0}
+  .adm-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .adm-sub{font-size:11px;color:var(--text-faint)}
+  .adm-btn{background:var(--bg-3);border:1px solid var(--line);color:var(--text);font-size:12px;padding:6px 10px;border-radius:7px}
+  .adm-btn:hover{border-color:var(--accent)}
+  .adm-btn.danger{color:#ff8a96;border-color:rgba(255,77,94,.3)}
+  .adm-btn.danger:hover{background:rgba(255,77,94,.15)}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .stat{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .stat b{display:block;font-size:26px;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .stat span{font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px}
+  .spinner{width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+
+  /* ---------- BANNED ---------- */
+  .banned-screen{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;z-index:300;background:var(--bg-0);text-align:center;padding:30px}
+  .banned-screen.show{display:flex}
+  .banned-screen h2{font-size:24px;color:var(--danger)}
+  .banned-screen p{color:var(--text-dim);max-width:360px}
+
   .scrim{display:none}
   @media(max-width:880px){
     .members{display:none}
@@ -337,6 +417,7 @@
         <div class="me-name" id="meName"></div>
         <div class="me-status" id="meStatusText">● çevrimiçi</div>
       </div>
+      <button class="icon-btn" id="adminBtn" title="Yönetim paneli" style="display:none">🛡</button>
       <button class="icon-btn" id="settingsBtn" title="Ayarlar">⚙</button>
       <button class="icon-btn" id="logoutBtn" title="Çıkış">⏻</button>
     </div>
@@ -398,9 +479,13 @@
       </select>
     </div>
     <div class="field"><label>Özel durum</label><input type="text" id="setCustom" maxlength="60" placeholder="ne yapıyorsun?"/></div>
+    <div class="field"><label>Hakkında (bio)</label><textarea id="setBio" rows="2" maxlength="160" placeholder="kendini birkaç kelimeyle anlat"></textarea></div>
+    <div class="field"><label>Avatar rengi</label><div class="swatches" id="avatarSwatches"></div></div>
+    <div class="field"><label>Aksan rengi (profil kartın)</label><div class="swatches" id="accentSwatches"></div></div>
     <div class="toggle-row"><div><span>Bildirim sesleri</span><small>Yeni mesajda kısa ses</small></div><div class="switch" id="swSound"></div></div>
     <div class="toggle-row"><div><span>Masaüstü bildirimleri</span><small>Sekme arka plandayken</small></div><div class="switch" id="swDesktop"></div></div>
     <div class="toggle-row"><div><span>Bas-konuş (Space)</span><small>Seste sadece basılıyken konuş</small></div><div class="switch" id="swPtt"></div></div>
+    <div class="toggle-row"><div><span>Animasyonlar</span><small>Geçiş ve hareket efektleri</small></div><div class="switch" id="swAnim"></div></div>
     <button class="btn" id="setSave" style="margin-top:18px">Kaydet</button>
   </div>
 </div>
@@ -416,10 +501,48 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- PROFİL KARTI -->
+<div class="pcard-wrap" id="pcardWrap">
+  <div class="pcard" id="pcard">
+    <div class="pcard-banner" id="pcardBanner"></div>
+    <div class="pcard-body">
+      <div class="pcard-avatar" id="pcardAvatar"></div>
+      <div class="pcard-name" id="pcardName"></div>
+      <div class="pcard-status" id="pcardStatus"></div>
+      <div class="pcard-bio" id="pcardBio" style="display:none"></div>
+      <div class="pcard-actions" id="pcardActions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="overlay" id="adminOverlay">
+  <div class="modal wide">
+    <h3>🛡 Yönetim Paneli <span class="x" id="adminClose">✕</span></h3>
+    <div class="tabs">
+      <button class="tab active" data-tab="members">Üyeler</button>
+      <button class="tab" data-tab="channels">Kanallar</button>
+      <button class="tab" data-tab="stats">İstatistik</button>
+    </div>
+    <div id="tabMembers"></div>
+    <div id="tabChannels" style="display:none"></div>
+    <div id="tabStats" style="display:none"></div>
+  </div>
+</div>
+
+<!-- YASAK EKRANI -->
+<div class="banned-screen" id="bannedScreen">
+  <div class="brand" style="font-size:24px">NØLL CHAT</div>
+  <h2>⛔ Erişimin engellendi</h2>
+  <p>Bu sunucudan bir yönetici tarafından yasaklandın. Yeni mesaj gönderemezsin.</p>
+  <button class="btn danger" id="bannedLogout" style="max-width:200px">Çıkış yap</button>
+</div>
+
 <script>
 /* ===================== AYARLAR ===================== */
-const SUPABASE_URL = "https://yamedfzephdspenjysev.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_loCQrrvM5O_aOlpbdzmm_g_yNZXPBFt";
+const SUPABASE_URL = "";
+const SUPABASE_ANON_KEY = "";
 const VOICE_ROOMS = [ {id:"v1",name:"Sesli Oda"}, {id:"v2",name:"Oyun Odası"} ];
 /* ================================================== */
 
@@ -433,11 +556,15 @@ let feedSub=null, reactSub=null;
 let messagesById={}, reactionsByMsg={}, renderedMeta={last:null};
 let unread={}, replyTarget=null, pendingFile=null;
 let typingUsers={}, lastTypingSent=0;
-let prefs={sound:true, desktop:false, ptt:false};
+let prefs={sound:true, desktop:false, ptt:false, animations:true};
+let profileCache={}, profilesSub=null;
+let selAvatarColor=null, selAccent=null;
+const PALETTE=['#00e5ff','#ff2d78','#2dff9e','#ffb02e','#b388ff','#ff5e5e','#5ed0ff','#ff9bc0','#7CFF6B','#ffd166','#a0a0ff','#ff7a45','#e0e0ff','#00d2a8'];
 
 /* ---------- helpers ---------- */
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function colorFor(n){n=n||'?';let h=0;for(let i=0;i<n.length;i++)h=n.charCodeAt(i)+((h<<5)-h);return `hsl(${Math.abs(h)%360},70%,58%)`;}
+function colorForUser(id,username){return (id&&profileCache[id]&&profileCache[id].avatar_color)||colorFor(username);}
 function initial(n){return (n||'?').trim().charAt(0).toUpperCase();}
 function fmtTime(iso){const d=new Date(iso);return d.toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});}
 function fmtDay(iso){const d=new Date(iso),n=new Date();const y=new Date(n);y.setDate(n.getDate()-1);
@@ -512,22 +639,47 @@ async function ensureProfile(user){
 
 async function enterApp(session){
   const prof=await ensureProfile(session.user);
-  me={id:session.user.id,username:prof.username,status:prof.status||'online',custom_status:prof.custom_status||''};
-  loadPrefs();
+  me={id:session.user.id,username:prof.username,status:prof.status||'online',custom_status:prof.custom_status||'',
+      role:prof.role||'member',banned:!!prof.banned,avatar_color:prof.avatar_color||null,accent:prof.accent||null,bio:prof.bio||''};
+  loadPrefs();applyAnimPref();
   $('authWrap').style.display='none';
   $('app').classList.add('show');
-  paintMe();
+  if(me.banned){$('bannedScreen').classList.add('show');return;}
+  await loadProfilesCache();
+  paintMe();updateAdminBtn();
   await loadChannels();
   setupPresence();
   setupFeeds();
+  setupProfilesFeed();
   renderVoiceUI();
   startSpeakingLoop();
   setupIdle();
 }
+async function loadProfilesCache(){
+  const {data}=await sb.from('profiles').select('id,username,role,banned,avatar_color,accent,bio,status,custom_status');
+  profileCache={};(data||[]).forEach(p=>profileCache[p.id]=p);
+  if(me)profileCache[me.id]={...profileCache[me.id],...me};
+}
+function updateAdminBtn(){$('adminBtn').style.display=me.role==='admin'?'block':'none';}
+function setupProfilesFeed(){
+  profilesSub=sb.channel('feed-profiles')
+    .on('postgres_changes',{event:'*',schema:'public',table:'profiles'},h=>{
+      const row=h.new||h.old;if(!row)return;
+      if(h.eventType==='DELETE'){delete profileCache[row.id];}
+      else profileCache[row.id]=row;
+      if(h.new&&h.new.id===me.id){
+        if(h.new.banned){location.reload();return;}
+        me.role=h.new.role;me.avatar_color=h.new.avatar_color;me.accent=h.new.accent;me.bio=h.new.bio||'';
+        paintMe();updateAdminBtn();
+      }
+      renderMembers();
+      if($('adminOverlay').classList.contains('show'))renderAdminMembers();
+    }).subscribe();
+}
 function paintMe(){
   $('meName').textContent=me.username;
   $('meAvatar').textContent=initial(me.username);
-  $('meAvatar').style.background=colorFor(me.username);
+  $('meAvatar').style.background=colorForUser(me.id,me.username);
   $('meDot').className='status-dot status-'+me.status;
   $('meStatusText').textContent=me.custom_status?me.custom_status:STATUS_LABEL[me.status];
 }
@@ -646,13 +798,13 @@ function buildMessage(m, grouped){
   }
   wrap.innerHTML=`
     <div class="msg-gutter">
-      <div class="avatar" style="background:${colorFor(m.username)}">${initial(m.username)}</div>
+      <div class="avatar" style="background:${colorForUser(m.user_id,m.username)}">${initial(m.username)}</div>
       <span class="msg-hover-time">${fmtTime(m.created_at)}</span>
     </div>
     <div class="msg-body">
       ${replyHtml}
       <div class="msg-head">
-        <span class="msg-author" style="color:${colorFor(m.username)}">${esc(m.username)}</span>
+        <span class="msg-author" style="color:${colorForUser(m.user_id,m.username)}">${esc(m.username)}</span>
         <span class="msg-time">${fmtTime(m.created_at)}</span>
         ${m.edited_at?'<span class="edited">(düzenlendi)</span>':''}
       </div>
@@ -671,6 +823,8 @@ function buildMessage(m, grouped){
   wrap.querySelectorAll('.tb-btn').forEach(b=>b.onclick=(e)=>{e.stopPropagation();msgAction(b.dataset.act,m,wrap,b);});
   const rr=wrap.querySelector('.reply-ref');if(rr)rr.onclick=()=>scrollToMsg(rr.dataset.to);
   const img=wrap.querySelector('.attach img');if(img)img.onclick=()=>openLightbox(img.dataset.full);
+  const av=wrap.querySelector('.msg-gutter .avatar');if(av)av.onclick=()=>openProfileCard(m.user_id);
+  const au=wrap.querySelector('.msg-author');if(au)au.onclick=()=>openProfileCard(m.user_id);
   return wrap;
 }
 function buildReactions(mid){
@@ -702,7 +856,9 @@ function appendMessage(m,scrollIfNear){
     const d=document.createElement('div');d.className='date-div';d.textContent=fmtDay(m.created_at);box.appendChild(d);
   }
   const near=box.scrollHeight-box.scrollTop-box.clientHeight<140;
-  box.appendChild(buildMessage(m,grouped && !needDate));
+  const el=buildMessage(m,grouped && !needDate);
+  if(scrollIfNear===true)el.classList.add('enter');
+  box.appendChild(el);
   if(scrollIfNear===false||near||m.user_id===me.id)box.scrollTop=box.scrollHeight;
   else updateJump();
 }
@@ -922,17 +1078,19 @@ function setupPresence(){
   presence.subscribe(async s=>{if(s==='SUBSCRIBED')await trackPresence();});
 }
 async function trackPresence(){
-  if(presence)await presence.track({username:me.username,status:effStatus(),custom_status:me.custom_status});
+  if(presence)await presence.track({username:me.username,status:effStatus(),custom_status:me.custom_status,avatar_color:me.avatar_color});
 }
 function renderMembers(){
   const list=$('memberList');const u=Object.entries(onlineUsers).filter(([k,x])=>x.status!=='invisible'||k===me.id);
   $('onlineCount').textContent=u.length;list.innerHTML='';
   u.sort((a,b)=>(a[1].username||'').localeCompare(b[1].username||'')).forEach(([k,x])=>{
     const el=document.createElement('div');el.className='member'+(k===me.id?' is-me':'');
-    el.innerHTML=`<div class="avatar" style="background:${colorFor(x.username)}">${initial(x.username)}
+    const col=x.avatar_color||colorForUser(k,x.username);
+    el.innerHTML=`<div class="avatar" style="background:${col}">${initial(x.username)}
         <span class="status-dot status-${x.status||'online'}"></span></div>
       <div class="member-info"><div class="member-name">${esc(x.username)}${k===me.id?' (sen)':''}</div>
       ${x.custom_status?`<div class="member-cs">${esc(x.custom_status)}</div>`:''}</div>`;
+    el.onclick=()=>openProfileCard(k);
     list.appendChild(el);
   });
 }
@@ -946,7 +1104,7 @@ function setupIdle(){
   },{passive:true}));
   setInterval(()=>{
     if(me.status==='online' && !idleApplied && Date.now()-lastActive>5*60*1000){
-      idleApplied=true;if(presence)presence.track({username:me.username,status:'away',custom_status:me.custom_status});
+      idleApplied=true;if(presence)presence.track({username:me.username,status:'away',custom_status:me.custom_status,avatar_color:me.avatar_color});
     }
   },30000);
 }
@@ -1089,9 +1247,26 @@ function renderVoiceUI(){
 }
 
 /* ---------- settings modal ---------- */
+function buildSwatches(containerId, current, onPick){
+  const c=$(containerId);c.innerHTML='';
+  PALETTE.forEach(col=>{
+    const s=document.createElement('div');s.className='swatch'+(current===col?' sel':'');
+    s.style.background=col;s.dataset.col=col;
+    s.onclick=()=>{c.querySelectorAll('.swatch').forEach(x=>x.classList.remove('sel'));s.classList.add('sel');onPick(col);};
+    c.appendChild(s);
+  });
+  const wrap=document.createElement('label');wrap.className='swatch swatch-custom';wrap.title='Özel renk';
+  const inp=document.createElement('input');inp.type='color';inp.value=current&&current.startsWith('#')?current:'#00e5ff';
+  inp.oninput=()=>{c.querySelectorAll('.swatch').forEach(x=>x.classList.remove('sel'));onPick(inp.value);};
+  wrap.appendChild(inp);c.appendChild(wrap);
+}
 function openSettings(){
   $('setName').value=me.username;$('setStatus').value=me.status;$('setCustom').value=me.custom_status||'';
-  setSwitch('swSound',prefs.sound);setSwitch('swDesktop',prefs.desktop);setSwitch('swPtt',prefs.ptt);
+  $('setBio').value=me.bio||'';
+  selAvatarColor=me.avatar_color||null;selAccent=me.accent||null;
+  buildSwatches('avatarSwatches',selAvatarColor,c=>selAvatarColor=c);
+  buildSwatches('accentSwatches',selAccent,c=>selAccent=c);
+  setSwitch('swSound',prefs.sound);setSwitch('swDesktop',prefs.desktop);setSwitch('swPtt',prefs.ptt);setSwitch('swAnim',prefs.animations);
   $('settingsOverlay').classList.add('show');
 }
 function setSwitch(id,on){$(id).classList.toggle('on',!!on);}
@@ -1099,6 +1274,7 @@ $('settingsBtn').onclick=openSettings;
 $('settingsClose').onclick=()=>$('settingsOverlay').classList.remove('show');
 $('swSound').onclick=()=>$('swSound').classList.toggle('on');
 $('swPtt').onclick=()=>$('swPtt').classList.toggle('on');
+$('swAnim').onclick=()=>$('swAnim').classList.toggle('on');
 $('swDesktop').onclick=async()=>{
   const el=$('swDesktop');
   if(!el.classList.contains('on')){
@@ -1108,19 +1284,142 @@ $('swDesktop').onclick=async()=>{
   }else el.classList.remove('on');
 };
 $('setSave').onclick=async()=>{
-  const name=$('setName').value.trim();const status=$('setStatus').value;const custom=$('setCustom').value.trim();
+  const name=$('setName').value.trim();const status=$('setStatus').value;const custom=$('setCustom').value.trim();const bio=$('setBio').value.trim();
   prefs.sound=$('swSound').classList.contains('on');
   prefs.desktop=$('swDesktop').classList.contains('on');
-  prefs.ptt=$('swPtt').classList.contains('on');savePrefs();
-  const upd={status,custom_status:custom||null};
+  prefs.ptt=$('swPtt').classList.contains('on');
+  prefs.animations=$('swAnim').classList.contains('on');savePrefs();applyAnimPref();
+  const upd={status,custom_status:custom||null,bio:bio||null,avatar_color:selAvatarColor,accent:selAccent};
   if(name&&name!==me.username)upd.username=name;
   const {error}=await sb.from('profiles').update(upd).eq('id',me.id);
   if(error){toast(error.code==='23505'?'Bu kullanıcı adı alınmış':'Kaydedilemedi',true);return;}
   if(upd.username)me.username=name;
-  me.status=status;me.custom_status=custom;
+  me.status=status;me.custom_status=custom;me.bio=bio;me.avatar_color=selAvatarColor;me.accent=selAccent;
+  profileCache[me.id]={...profileCache[me.id],...me};
   paintMe();await trackPresence();applyMicState();renderVoiceUI();
   $('settingsOverlay').classList.remove('show');toast('Ayarlar kaydedildi');
 };
+function applyAnimPref(){document.body.classList.toggle('no-anim',!prefs.animations);}
+
+/* ---------- profil kartı ---------- */
+async function openProfileCard(userId){
+  let p=profileCache[userId];
+  if(!p){const {data}=await sb.from('profiles').select('*').eq('id',userId).maybeSingle();p=data;if(p)profileCache[userId]=p;}
+  if(!p){toast('Profil bulunamadı',true);return;}
+  const accent=p.accent||colorFor(p.username);
+  const col=p.avatar_color||colorFor(p.username);
+  $('pcardBanner').style.background=`linear-gradient(120deg, ${accent}, ${p.accent?accent:'#ff2d78'})`;
+  const av=$('pcardAvatar');av.textContent=initial(p.username);av.style.background=col;
+  const online=onlineUsers[userId];
+  const st=online?(online.status||'online'):(p.status||'online');
+  let badge='';
+  if(p.banned)badge='<span class="role-badge banned">yasaklı</span>';
+  else if(p.role==='admin')badge='<span class="role-badge admin">admin</span>';
+  $('pcardName').innerHTML=esc(p.username)+badge;
+  $('pcardStatus').textContent=(online?'🟢 çevrimiçi':'⚫ çevrimdışı')+(p.custom_status?' • '+p.custom_status:'')+' • '+(STATUS_LABEL[st]||st);
+  const bioEl=$('pcardBio');
+  if(p.bio){bioEl.style.display='block';bioEl.textContent=p.bio;}else bioEl.style.display='none';
+  const act=$('pcardActions');act.innerHTML='';
+  if(me.role==='admin'&&userId!==me.id){
+    const b1=document.createElement('button');b1.className='btn ghost';
+    b1.textContent=p.role==='admin'?'Adminlikten al':'Admin yap';
+    b1.onclick=()=>adminSetRole(userId,p.role==='admin'?'member':'admin');
+    const b2=document.createElement('button');b2.className='btn danger';
+    b2.textContent=p.banned?'Yasağı kaldır':'Yasakla';
+    b2.onclick=()=>adminSetBanned(userId,!p.banned);
+    act.appendChild(b1);act.appendChild(b2);
+  }
+  $('pcardWrap').classList.add('show');
+}
+$('pcardWrap').onclick=e=>{if(e.target.id==='pcardWrap')$('pcardWrap').classList.remove('show');};
+
+/* ---------- admin panel ---------- */
+$('adminBtn').onclick=()=>{$('adminOverlay').classList.add('show');switchAdminTab('members');};
+$('adminClose').onclick=()=>$('adminOverlay').classList.remove('show');
+$('adminOverlay').onclick=e=>{if(e.target.id==='adminOverlay')$('adminOverlay').classList.remove('show');};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchAdminTab(t.dataset.tab));
+function switchAdminTab(tab){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  $('tabMembers').style.display=tab==='members'?'block':'none';
+  $('tabChannels').style.display=tab==='channels'?'block':'none';
+  $('tabStats').style.display=tab==='stats'?'block':'none';
+  if(tab==='members')renderAdminMembers();
+  if(tab==='channels')renderAdminChannels();
+  if(tab==='stats')renderAdminStats();
+}
+function renderAdminMembers(){
+  const c=$('tabMembers');const arr=Object.values(profileCache).sort((a,b)=>(a.username||'').localeCompare(b.username||''));
+  c.innerHTML='';
+  arr.forEach(p=>{
+    const row=document.createElement('div');row.className='adm-row';
+    const badge=p.banned?'<span class="role-badge banned">yasaklı</span>':(p.role==='admin'?'<span class="role-badge admin">admin</span>':'');
+    row.innerHTML=`<div class="avatar" style="background:${p.avatar_color||colorFor(p.username)}">${initial(p.username)}</div>
+      <div class="adm-info"><div class="adm-name">${esc(p.username)} ${badge}${p.id===me.id?' <span class="adm-sub">(sen)</span>':''}</div>
+      <div class="adm-sub">${p.bio?esc(p.bio.slice(0,50)):'—'}</div></div>`;
+    if(p.id!==me.id){
+      const b1=document.createElement('button');b1.className='adm-btn';
+      b1.textContent=p.role==='admin'?'Admin al':'Admin yap';
+      b1.onclick=()=>adminSetRole(p.id,p.role==='admin'?'member':'admin');
+      const b2=document.createElement('button');b2.className='adm-btn danger';
+      b2.textContent=p.banned?'Yasağı kaldır':'Yasakla';
+      b2.onclick=()=>adminSetBanned(p.id,!p.banned);
+      row.appendChild(b1);row.appendChild(b2);
+    }
+    c.appendChild(row);
+  });
+}
+function renderAdminChannels(){
+  const c=$('tabChannels');c.innerHTML='';
+  channels.forEach(ch=>{
+    const row=document.createElement('div');row.className='adm-row';
+    row.innerHTML=`<span class="hash" style="font-size:18px;color:var(--text-faint)">#</span>
+      <div class="adm-info"><div class="adm-name">${esc(ch.name)}</div><div class="adm-sub">${esc(ch.description||'—')}</div></div>`;
+    const bR=document.createElement('button');bR.className='adm-btn';bR.textContent='Yeniden adlandır';
+    bR.onclick=async()=>{const nn=prompt('Yeni kanal adı:',ch.name);if(!nn)return;
+      const nd=prompt('Açıklama (boş bırakılabilir):',ch.description||'');
+      const {error}=await sb.from('channels').update({name:nn.trim().replace(/\s+/g,'-').toLowerCase(),description:(nd||'').trim()||null}).eq('id',ch.id);
+      if(error)toast('Güncellenemedi: '+error.message,true);else toast('Güncellendi');};
+    const bC=document.createElement('button');bC.className='adm-btn danger';bC.textContent='Temizle';
+    bC.onclick=async()=>{if(!confirm(`#${ch.name} içindeki TÜM mesajlar silinsin mi?`))return;
+      const {error}=await sb.from('messages').delete().eq('channel_id',ch.id);
+      if(error)toast('Temizlenemedi: '+error.message,true);else{toast('Kanal temizlendi');if(currentChannel&&currentChannel.id===ch.id)loadMessages(ch.id);}};
+    const bD=document.createElement('button');bD.className='adm-btn danger';bD.textContent='Sil';
+    bD.onclick=async()=>{if(!confirm(`#${ch.name} kanalı ve tüm mesajları silinsin mi?`))return;
+      const {error}=await sb.from('channels').delete().eq('id',ch.id);
+      if(error)toast('Silinemedi: '+error.message,true);else toast('Kanal silindi');};
+    row.appendChild(bR);row.appendChild(bC);row.appendChild(bD);
+    c.appendChild(row);
+  });
+}
+async function renderAdminStats(){
+  const c=$('tabStats');c.innerHTML='<div style="padding:20px;text-align:center"><span class="spinner"></span></div>';
+  const mc=await sb.from('messages').select('*',{count:'exact',head:true});
+  const rc=await sb.from('reactions').select('*',{count:'exact',head:true});
+  c.innerHTML=`<div class="stat-grid">
+    <div class="stat"><b>${Object.keys(profileCache).length}</b><span>Üye</span></div>
+    <div class="stat"><b>${channels.length}</b><span>Kanal</span></div>
+    <div class="stat"><b>${mc.count??'—'}</b><span>Mesaj</span></div>
+    <div class="stat"><b>${rc.count??'—'}</b><span>Tepki</span></div>
+    <div class="stat"><b>${Object.values(profileCache).filter(p=>p.role==='admin').length}</b><span>Admin</span></div>
+    <div class="stat"><b>${Object.values(profileCache).filter(p=>p.banned).length}</b><span>Yasaklı</span></div>
+  </div>`;
+}
+async function adminSetRole(id,role){
+  const {error}=await sb.from('profiles').update({role}).eq('id',id);
+  if(error){toast('İşlem başarısız (admin misin?)',true);return;}
+  if(profileCache[id])profileCache[id].role=role;
+  toast(role==='admin'?'Admin yapıldı':'Adminlik alındı');
+  renderAdminMembers();$('pcardWrap').classList.remove('show');
+}
+async function adminSetBanned(id,banned){
+  if(!confirm(banned?'Bu kullanıcı yasaklansın mı?':'Yasak kaldırılsın mı?'))return;
+  const {error}=await sb.from('profiles').update({banned}).eq('id',id);
+  if(error){toast('İşlem başarısız (admin misin?)',true);return;}
+  if(profileCache[id])profileCache[id].banned=banned;
+  toast(banned?'Kullanıcı yasaklandı':'Yasak kaldırıldı');
+  renderAdminMembers();$('pcardWrap').classList.remove('show');
+}
+$('bannedLogout').onclick=async()=>{await sb.auth.signOut();location.reload();};
 
 /* ---------- new channel ---------- */
 $('addChanBtn').onclick=()=>{$('newChanName').value='';$('newChanDesc').value='';$('chanOverlay').classList.add('show');$('newChanName').focus();};
